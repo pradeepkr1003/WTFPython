@@ -4,7 +4,6 @@ Two Steps:
     2. Divide the problem until it becomes the base case.
 """
 import timeit
-from gettext import find
 from typing import List
 
 
@@ -35,10 +34,9 @@ def find_max(_list_: List[int], max_: int = 0) -> int:
         if val > max_:
             max_ = val
 
-        find_max(_list_, max_)
+        return find_max(_list_, max_)
 
     else:
-        print('the max value is', max_)
         return max_
 
 
@@ -73,23 +71,26 @@ def qsort_faster(_list_: List[int]) -> int:
 
 # StdIn:
 # ======
-# _num_list = [1,2,3,4,5,6,23,7,8,9,10]
-_num_list = [x for x in range(100)]
+_num_list = [1, 2, 3]
 
 # Stdout
 # ======
+
 
 # print('stdout: [from first function] ', sum_list(_num_list))
 # print('stdout: [from second function] ', _sum_list(_num_list))
 
 # -
-# print('MAX (func) :', find_max(_num_list))
+print('MAX (func) :', find_max(_num_list))
 # -
 
 
-print('qsort with middle pivot', timeit.repeat(
-    'qsort_faster([x for x in range(500)])', 'from __main__ import qsort_faster', number=1))
-# - 
-print('qsort with starting value as pivot', timeit.repeat(
-    'qsort([x for x in range(950)])', 'from __main__ import qsort', number=1))
+# print('qsort with middle pivot', timeit.repeat(
+#     'qsort_faster([x for x in range(500)])', 'from __main__ import qsort_faster', number=1))
+
+# -
+
+# print('qsort with starting value as pivot', timeit.repeat(
+#     'qsort([x for x in range(950)])', 'from __main__ import qsort', number=1))
+
 # qsort(_num_list)
